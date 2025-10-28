@@ -53,7 +53,9 @@ GIT_THEME_PROMPT_SUFFIX=""
 # Displays the current prompt
 function _omb_theme_PROMPT_COMMAND() {
   PS1=$icon_start$(_omb_prompt_print_python_venv)
+  if hash battery_percentage 2>/dev/null; then
   PS1+=$icon_battery'$(battery_percentage)% '
+  fi
   PS1+=$icon_time'\t'
   PS1+=$icon_user$_omb_prompt_bold_brown'\u'
   PS1+=$_omb_prompt_normal$icon_host$_omb_prompt_bold_teal'\h'
